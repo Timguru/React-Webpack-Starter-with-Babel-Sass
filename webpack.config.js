@@ -18,6 +18,17 @@ module.exports = {
 				test: /\.scss$/,
 				exclude: /node_modules/,
 				use: ['style-loader','css-loader','sass-loader']
+			},
+			{
+				test: /\.(png|jp(e*)g|svg)$/i,
+				use: [
+					{
+						loader: 'url-loader',
+						options: {
+							limit: 8000,
+							name: 'images/[hash]-[name].[ext]'
+						}
+				}]
 			}
 		]
 	},
