@@ -1,11 +1,16 @@
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const webpack = require('webpack');
+const autoprefixer = require('autoprefixer');
 
 module.exports = {
-	entry: './src/index.js',
+	entry: {
+		index: './src/index.js'
+	},
 	output: {
 		path: path.join(__dirname, '/build'),
-		filename: 'index_bundle.js'
+		filename: '[name].bundle.js'
 	},
 	module: {
 		rules: [
@@ -17,17 +22,28 @@ module.exports = {
 			{
 				test: /\.scss$/,
 				exclude: /node_modules/,
-				use: ['style-loader','css-loader','sass-loader']
+				use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
 			},
 			{
-				test: /\.(png|jp(e*)g|svg)$/i,
+				test: /\.(png|jp(e*)g)$/i,
 				use: [
 					{
 						loader: 'url-loader',
 						options: {
 							limit: 8000,
-							name: 'images/[hash]-[name].[ext]'
+							name: 'images/[name]-[hash].[ext]'
 						}
+				}]
+			},
+			{
+				test: /\.(svg)$/,
+				use: ['@svgr/webpack',
+				{
+					loader: 'url-loader',
+					options: {
+						limit: 8000,
+						name: 'images/[name]-[hash].[ext]'
+					}
 				}]
 			}
 		]
@@ -35,6 +51,12 @@ module.exports = {
 	plugins: [
 		new HTMLWebpackPlugin({
 			template: './src/index.html'
+		}),
+		new MiniCssExtractPlugin(),
+		new webpack.LoaderOptionsPlugin({
+			options: {
+				postcss: [ autoprefixer() ]
+			}
 		})
 	]
 }
