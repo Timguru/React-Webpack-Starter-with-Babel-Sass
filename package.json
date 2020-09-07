@@ -10,7 +10,6 @@
   "author": "Sapinder",
   "license": "ISC",
   "dependencies": {
-    "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
@@ -21,10 +20,12 @@
     "@svgr/webpack": "^5.4.0",
     "autoprefixer": "^9.8.6",
     "babel-loader": "^8.1.0",
+    "copy-webpack-plugin": "^6.1.0",
     "css-loader": "^4.2.1",
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.3.0",
     "mini-css-extract-plugin": "^0.10.0",
+    "node-sass": "^4.14.1",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^9.0.3",
     "url-loader": "^4.1.0",
