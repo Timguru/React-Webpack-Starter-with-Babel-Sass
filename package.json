@@ -8,9 +8,6 @@
 		"build": "webpack --mode production",
 		"lint": "eslint ./src"
 	},
-	"keywords": [
-		"reactjs", "webpack", "babel", "sass", "eslint"
-	],
   "author": "Sapinder",
   "license": "ISC",
   "dependencies": {
