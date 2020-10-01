@@ -6,7 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 
-const EntryAndOutput = {
+const mainProperties = {
 	entry: {
 		index: './src/index.js'
 	},
@@ -72,7 +72,7 @@ const plugins = [
 
 
 module.exports = {
-	...EntryAndOutput,
+	...mainProperties,
 	module: rules,
 	plugins: plugins
 };
